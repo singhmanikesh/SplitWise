@@ -23,6 +23,6 @@ public class Split {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
+    private Long userId;
     private Double amount;
 }

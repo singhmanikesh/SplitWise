@@ -1,6 +1,6 @@
 package com.manikesh.splitwise.splitwise.model;
 
-public enum splitType {
+public enum SplitType {
     EQUAL,
     PERCENTAGE
 }
