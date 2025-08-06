@@ -1,15 +1,17 @@
 package com.manikesh.splitwise.splitwise.controller;
 
 
+import com.manikesh.splitwise.splitwise.dto.ExpenseRequest;
+import com.manikesh.splitwise.splitwise.dto.ExpenseResponse;
 import com.manikesh.splitwise.splitwise.dto.GroupRequest;
 import com.manikesh.splitwise.splitwise.dto.GroupResponse;
+import com.manikesh.splitwise.splitwise.model.Expense;
 import com.manikesh.splitwise.splitwise.model.User;
 import com.manikesh.splitwise.splitwise.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -18,6 +20,11 @@ public class UserController {
 
     private final UserService userservice;
 
+
+    @GetMapping("/expense/group")
+    public List<ExpenseResponse> getExpensesByGroup(@RequestParam Long groupId) {
+        return userservice.getExpensesByGroup(groupId);
+    }
 
 
     @PostMapping("/add")
@@ -37,6 +44,12 @@ public class UserController {
 
         return userservice.addGroup(request);
 
+    }
+
+
+    @PostMapping("/expense/add")
+    public String addExpense(@RequestBody ExpenseRequest request) {
+        return userservice.addExpense(request);
     }
 
 

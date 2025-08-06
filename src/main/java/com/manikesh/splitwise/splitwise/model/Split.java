@@ -3,6 +3,7 @@ package com.manikesh.splitwise.splitwise.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Split {
 
     @Id
@@ -23,6 +25,5 @@ public class Split {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    private Long userId;
     private Double amount;
 }

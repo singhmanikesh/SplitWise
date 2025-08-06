@@ -1,5 +1,6 @@
 package com.manikesh.splitwise.splitwise.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class Group {
     private List<User> members;
 
     @OneToMany(mappedBy = "group")
+    @JsonIgnore
     private List<Expense> expense;
 
     @Transient
